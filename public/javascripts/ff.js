@@ -74,6 +74,10 @@ app.controller("RoomCtrl", function($scope, rooms, post)
 
 	$scope.roomID = post._id;
 	$scope.playedCard = "not played yet";
+
+
+	var howManyKeystrokes = 0;
+
 	var socket = io();
 
 
@@ -90,6 +94,31 @@ app.controller("RoomCtrl", function($scope, rooms, post)
 			$scope.playedCard = card;
 		});
 	});
+
+
+	$scope.gDocsIt = function(event)
+	{
+		//howManyKeystrokes++;
+		//if (howManyKeystrokes >= 20)
+		//if (event.keyCode === 13)
+		{
+			setTimeout(function()
+			{
+				socket.emit("type", $scope.text);
+			}, 1000);
+			//howManyKeystrokes = 0;
+		}
+		
+	}
+
+	socket.on("typed", function(text)
+	{
+		$scope.$apply(function()
+		{
+			$scope.text = text;
+		});
+	});
+
 
 });
 

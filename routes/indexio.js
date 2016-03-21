@@ -14,6 +14,18 @@ module.exports = function(io)
 			io.emit("played", card);
 		});
 
+		socket.on("type", function(text)
+		{
+			//console.log(text);
+			io.emit("typed", text);
+		});
+
+
+
+
+
+
+
 		socket.on("disconnect", function()
 		{
 			console.log("disconnexted");
