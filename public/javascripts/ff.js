@@ -71,8 +71,16 @@ app.controller("MainCtrl", function($scope, createRoom)
 app.controller("RoomCtrl", function($scope, rooms, post)
 {
 
-	var socket = io();
+
 	$scope.roomID = post._id;
+	var socket = io();
+
+
+	$scope.playCard = function()
+	{
+		//alert("card played");
+		socket.emit("play", "test in room " + post._id);
+	}
 
 })
 

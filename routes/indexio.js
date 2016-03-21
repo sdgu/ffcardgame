@@ -5,12 +5,22 @@ module.exports = function(io)
 
 	io.on("connection", function(socket)
 	{
-		console.log("indexio user connexted");
+		console.log("indexio user connexted at: " + socket.handshake.url);
+
+
+		socket.on("play", function(card)
+		{
+			console.log("card: " + card);
+		})
+
 		socket.on("disconnect", function()
 		{
 			console.log("disconnexted");
 		});
 	});
+
+
+
 
 	return router;
 }
