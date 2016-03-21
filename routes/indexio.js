@@ -11,7 +11,8 @@ module.exports = function(io)
 		socket.on("play", function(card)
 		{
 			console.log("card: " + card);
-		})
+			io.emit("played", card);
+		});
 
 		socket.on("disconnect", function()
 		{

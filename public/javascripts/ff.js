@@ -73,6 +73,7 @@ app.controller("RoomCtrl", function($scope, rooms, post)
 
 
 	$scope.roomID = post._id;
+	$scope.playedCard = "not played yet";
 	var socket = io();
 
 
@@ -82,7 +83,15 @@ app.controller("RoomCtrl", function($scope, rooms, post)
 		socket.emit("play", "test in room " + post._id);
 	}
 
-})
+	socket.on("played", function(card)
+	{
+		$scope.$apply(function() 
+		{
+			$scope.playedCard = card;
+		});
+	});
+
+});
 
 app.config(function($stateProvider, $urlRouterProvider, $locationProvider)
 {
