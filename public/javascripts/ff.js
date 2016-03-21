@@ -62,6 +62,7 @@ app.controller("MainCtrl", function($scope, createRoom)
 		var date = new Date();
 		$scope.roomID = randID + date.getDate() + date.getHours() + date.getSeconds();
 		createRoom.create({_id: $scope.roomID, dateCreated: date});
+		
 	}
 
 });
