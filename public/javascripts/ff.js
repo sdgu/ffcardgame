@@ -62,7 +62,7 @@ app.controller("MainCtrl", function($scope, createRoom)
 		var date = new Date();
 		$scope.roomID = randID + date.getDate() + date.getHours() + date.getSeconds();
 		createRoom.create({_id: $scope.roomID, dateCreated: date});
-		
+
 	}
 
 });
@@ -71,7 +71,7 @@ app.controller("MainCtrl", function($scope, createRoom)
 app.controller("RoomCtrl", function($scope, rooms, post)
 {
 
-
+	var socket = io();
 	$scope.roomID = post._id;
 
 })

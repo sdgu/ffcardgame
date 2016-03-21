@@ -26,6 +26,27 @@ var db = connextion.connection;
 
 
 
+var socket_io = require("socket.io");
+
+var io = socket_io();
+app.io = io;
+
+var routesio = require("./routes/indexio")(io);
+
+
+
+// var socket_io = require("socket.io");
+
+// var io = socket_io();
+// app.io = io;
+
+// var routesio = require("./routes/indexio")(io);
+
+// io.on("connection", function(socket)
+// {
+//   console.log("a user connexted");
+// });
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'public/views'));
@@ -73,5 +94,8 @@ app.use(function(err, req, res, next) {
   });
 });
 
-
+// http.listen(8080, function()
+// {
+//   console.log("listening on port 8080");
+// })
 module.exports = app;
